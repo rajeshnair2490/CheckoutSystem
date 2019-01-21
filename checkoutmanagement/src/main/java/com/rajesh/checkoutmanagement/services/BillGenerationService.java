@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rajesh.checkoutmanagement.beans.BillDetailsBean;
-import com.rajesh.checkoutmanagement.beans.ProductDetail;
+import com.rajesh.checkoutmanagement.beans.Product;
 import com.rajesh.checkoutmanagement.beans.ProductBillInfo;
 import com.rajesh.checkoutmanagement.beans.ProductDetailBean;
 
@@ -16,7 +16,7 @@ public class BillGenerationService {
 	private TaxCalculationService taxService;
 	
 	public void addToBill(ProductDetailBean productDetailBean) {
-		ProductDetail productBean = productDetailBean.getProductBean();
+		Product productBean = productDetailBean.getProductBean();
 		
 		ProductBillInfo productBillInfo = new ProductBillInfo();
 		productBillInfo.setProductCode(productBean.getProductCode());

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductDetailBean {
 	
-	private ProductDetail productBean;
+	private Product productBean;
 	private int quantity;
 	private double price;
 
@@ -24,11 +24,11 @@ public class ProductDetailBean {
 		this.price = price;
 	}
 
-	public ProductDetail getProductBean() {
+	public Product getProductBean() {
 		return productBean;
 	}
 
-	public void setProductBean(ProductDetail productBean) {
+	public void setProductBean(Product productBean) {
 		this.productBean = productBean;
 	}
 

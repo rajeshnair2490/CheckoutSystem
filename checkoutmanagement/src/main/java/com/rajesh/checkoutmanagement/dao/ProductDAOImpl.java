@@ -1,11 +1,11 @@
 package com.rajesh.checkoutmanagement.dao;
 
+import com.rajesh.checkoutmanagement.beans.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import com.rajesh.checkoutmanagement.beans.ProductDetail;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO {
@@ -14,17 +14,21 @@ public class ProductDAOImpl implements ProductDAO {
 	JdbcTemplate jdbcTemplate;
 	
 	@Override
-	public ProductDetail get(String productCode) {
-	    return jdbcTemplate.queryForObject("select * from ProductDetail where productCode=?", new Object[] {
-	            productCode
-	        },
-	        new BeanPropertyRowMapper < ProductDetail > (ProductDetail.class));
+	public Product get(String productCode) {
+		try {
+			return jdbcTemplate.queryForObject("select * from Product where productCode=?", new Object[] {
+							productCode
+					},
+					new BeanPropertyRowMapper <Product> (Product.class));
+		}catch (EmptyResultDataAccessException e) { // result.size() == 0;
+			return null;
+		}
 	}
 
 	@Override
-	public void add(ProductDetail productDetail) {
-		jdbcTemplate.update("Insert into ProductDetail(productCode, category, price ) VALUE(?,?,?)",         new Object[] {
-				productDetail.getProductCode(), productDetail.getCategory(),productDetail.getPrice()
+	public void add(Product product) {
+		jdbcTemplate.update("Insert into Product(PRODUCTCODE,CATEGORY,PRICE) VALUES(?,?,?)",         new Object[] {
+				product.getProductCode(), product.getCategory(), product.getPrice()
 	        });
 	}
 
@@ -35,7 +39,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public void update(ProductDetail bean, String productCode) {
+	public void update(Product bean, String productCode) {
 		// TODO Auto-generated method stub
 
 	}
