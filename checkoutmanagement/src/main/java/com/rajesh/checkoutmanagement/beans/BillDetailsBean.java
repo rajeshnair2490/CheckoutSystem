@@ -3,9 +3,11 @@ package com.rajesh.checkoutmanagement.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope("prototype")
 public class BillDetailsBean {
 	private double total_taxes_applicable;
 	private double total_price;

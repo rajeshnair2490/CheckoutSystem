@@ -2,26 +2,28 @@ package com.rajesh.checkoutmanagement;
 
 import java.util.Scanner;
 
-import com.rajesh.checkoutmanagement.beans.Product;
+import com.rajesh.checkoutmanagement.services.CheckoutService;
+import com.rajesh.checkoutmanagement.services.DisplayBillService;
 import com.rajesh.checkoutmanagement.services.ProductDetailsService;
+import com.rajesh.checkoutmanagement.beans.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.rajesh.checkoutmanagement.beans.BillDetailsBean;
 import com.rajesh.checkoutmanagement.beans.ProductDetailBean;
 import com.rajesh.checkoutmanagement.beans.ShoppingCartBean;
-import com.rajesh.checkoutmanagement.services.CheckoutService;
-import com.rajesh.checkoutmanagement.services.DisplayBillService;
 
 @Component
+@Profile("production")
 public class CommandLiner implements CommandLineRunner {
 	@Autowired
-	CheckoutService checkoutService;
+    CheckoutService checkoutService;
 	@Autowired
-	DisplayBillService displayBillService;
+    DisplayBillService displayBillService;
 	@Autowired
-	ProductDetailsService productService;
+    ProductDetailsService productService;
 	@Autowired
 	private ShoppingCartBean shoppingCart;
 
@@ -42,6 +44,10 @@ public class CommandLiner implements CommandLineRunner {
 			productDetails.setProductBean(product);
 			System.out.println("Enter the qty of Product :");
 			int quantity = sc.nextInt();
+			if(quantity<=0){
+			    System.out.println("Enter valid quantity greater than 0.");
+                quantity = sc.nextInt();
+            }
 			productDetails.setQuantity(quantity);
 			shoppingCart.add(productDetails);
 		}

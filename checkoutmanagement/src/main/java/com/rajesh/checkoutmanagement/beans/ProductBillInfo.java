@@ -44,7 +44,7 @@ public class ProductBillInfo {
 	
 	@Override
 	public String toString() {
-		return productCode + " : "+qty+" : "+price+" : "+taxes+" : "+getTotal()+" : ";
+		return productCode + " :: "+qty+" :: "+price+" :: "+taxes+" :: "+getTotal();
 	}
 	
 }

@@ -2,13 +2,10 @@ package com.rajesh.checkoutmanagement.services;
 
 import java.util.Scanner;
 
-import javax.transaction.Transactional;
-
 import com.rajesh.checkoutmanagement.beans.Product;
+import com.rajesh.checkoutmanagement.dao.ProductDAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.rajesh.checkoutmanagement.dao.ProductDAOImpl;
 
 @Service
 public class ProductDetailsService {
