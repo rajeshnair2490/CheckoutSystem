@@ -22,6 +22,6 @@ Display bill service -  Display bill in whatever format is required.
 In this project we have achieved loose coupling or IOC using spring DI framework.
 If spring DI was not available we would  have implemented IOC using the Factory methods to get beans.
 
-----------------Thanks for reading----------------------------------------------------------------------------------
+----------------Thank you for reading----------------------------------------------------------------------------------
 
 
